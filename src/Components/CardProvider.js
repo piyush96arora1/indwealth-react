@@ -8,7 +8,7 @@ export class CardProvider extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { fund: [], records: 0 }
+        this.state = { fund: [], records: 0 ,hasError:false}
     }
     componentDidMount() {
         this.getMutualFundData();
@@ -22,6 +22,8 @@ export class CardProvider extends React.Component {
             })
 
 
+        }).catch((response)=>{
+            this.setState({hasError:true})
         })
     }
     onEndVisit = () => {
@@ -32,9 +34,10 @@ export class CardProvider extends React.Component {
     render() {
         let fundCards = (this.state.fund.map(card => <FundCard key={card.id} fund={card} />))
         let noRecords = this.state.fund.length <= 0 ? Style.LoaderPostion : {}
-        return (
-
-            <React.Fragment>
+        let view;
+        if(!this.state.hasError)
+        {
+            view=( <React.Fragment>
                 {this.state.records > 0 && <div style={Style.BoldFont} className="layout-column layout-pading layout-margin">
                     <span>Explore Funds</span>
                     <span>Showing {this.state.records} funds </span>
@@ -52,7 +55,15 @@ export class CardProvider extends React.Component {
 
 
 
-            </React.Fragment>
+            </React.Fragment>)
+        }
+        else{
+            view=(<div>Error from service</div>)
+        }
+        return (
+            <React.Fragment>{view}</React.Fragment>
+            
+           
         )
 
     }

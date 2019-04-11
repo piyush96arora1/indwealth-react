@@ -2,7 +2,7 @@ export const Style = {
 
     RootCard: {
         minHeight: `11rem`,
-        maxWidth: `38rem`,
+        maxWidth: `41rem`,
         borderRadius: `1rem`
     }
     ,

@@ -12,7 +12,7 @@ export class FundCard extends React.Component {
 
         return (
             <React.Fragment>
-                <Card style={Style.RootCard} className=" layout-column flex-70 layout-padding layout-margin">
+                <Card style={Style.RootCard} className=" layout-column flex-50 layout-padding layout-margin">
                     <div className="layout-row flex-70 layout-align-space-between-center">
                         <span style={Style.CardHeading} className="flex-75">{this.props.fund.name}</span>
                         <span style={Style.Stars} className="flex-25">
