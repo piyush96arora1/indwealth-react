@@ -3,7 +3,8 @@ export const Style = {
     RootCard: {
         minHeight: `11rem`,
         maxWidth: `41rem`,
-        borderRadius: `1rem`
+        borderRadius: `1rem`,
+        margin:`1rem`
     }
     ,
     PositiveReturn: {

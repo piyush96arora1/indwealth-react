@@ -12,14 +12,14 @@ export class FundCard extends React.Component {
         let returnValue = returnVal >= 0 ? `+${returnVal}%` : `${returnVal}%`;
 
         return (
-            <React.Fragment>
-                <Grid item xs={12} md={6} lg={6} >
+            <React.Fragment >
+                <Grid  item xs={12} md={6}  >
                 <Card style={Style.RootCard}>
                 <Grid container direction='column' spacing={16} style={{padding:`1rem`}}>
                 <Grid item>
                     <Grid container spacing={8} >
-                        <Grid item xs={10}style={Style.CardHeading}>{this.props.fund.name}</Grid>
-                        <Grid item xs={2}style={Style.Stars} >
+                        <Grid item xs={7}style={Style.CardHeading}>{this.props.fund.name}</Grid>
+                        <Grid item xs={3}style={Style.Stars} >
                             <StarRatingComponent
                                 name="ratings"
                                 editing={false}

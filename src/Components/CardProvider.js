@@ -43,7 +43,8 @@ export class CardProvider extends React.Component {
                     <Grid item>Explore Funds</Grid>
                     <Grid item>Showing {this.state.records} funds </Grid>
                 </Grid>}
-                {this.state.fund.length > 0 && <Grid container spacing={16}>
+                {this.state.fund.length > 0 && 
+                <Grid container spacing={0} >
 
                     {fundCards}
                 </Grid>}
