@@ -1,6 +1,7 @@
 import React from 'react'
 import FundService from '../Service/FundService'
 import FundCard from './FundCard';
+import Grid from '@material-ui/core/Grid';
 import Style from '../Styles/Style'
 import InfiniteLoader from 'react-infinite-loader'
 
@@ -15,10 +16,10 @@ export class CardProvider extends React.Component {
     }
     getMutualFundData = () => {
         FundService.getMutualFunds(this.state.fund.length).then((responseData) => {
-            let mergedData = this.state.fund.concat(responseData.data.data)
+            let mergedData = this.state.fund.concat(responseData.data)
             this.setState({
                 fund: mergedData,
-                records: responseData.data.count
+                records: responseData.count
             })
 
 
@@ -38,14 +39,14 @@ export class CardProvider extends React.Component {
         if(!this.state.hasError)
         {
             view=( <React.Fragment>
-                {this.state.records > 0 && <div style={Style.BoldFont} className="layout-column layout-pading layout-margin">
-                    <span>Explore Funds</span>
-                    <span>Showing {this.state.records} funds </span>
-                </div>}
-                {this.state.fund.length > 0 && <div className="layout-row layout-xs-column layout-wrap layout-xs-column">
+                {this.state.records > 0 && <Grid container style={Style.BoldFont}  direction='column'>
+                    <Grid item>Explore Funds</Grid>
+                    <Grid item>Showing {this.state.records} funds </Grid>
+                </Grid>}
+                {this.state.fund.length > 0 && <Grid container spacing={16}>
 
                     {fundCards}
-                </div>}
+                </Grid>}
                 <div className="layout-row layout-align-center-center">
                     <div style={noRecords} className="flex" >
                         <InfiniteLoader onVisited={this.onEndVisit} loaderStyle={Style.InfiniteLoader} />
